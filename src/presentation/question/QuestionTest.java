@@ -2,6 +2,7 @@ package presentation.question;
 
 import di.AdapterModule;
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.use_case.question.QuestionUseCase;
 import domain.utils.Observer;
 
@@ -40,8 +41,19 @@ public class QuestionTest {
 
         // mất 5s
         controller.getQuestionById(123, questionService);
-        //
 
+
+        // ví dụ lấy ra câu hỏi kèm đáp án của nó
+        Observer<QuestionData> questionDataObserver = new Observer<QuestionData>() {
+            @Override
+            public void update(QuestionData value) {
+                System.out.println("Question :" + value.getQuestion());
+                System.out.println("Answers :" + value.getAnswers());
+            }
+        };
+        QuestionDataService questionDataService = new QuestionDataService();
+        questionDataService.attach(questionDataObserver);
+        controller.getQuestionAndAnswer(125, questionDataService);
 
     }
 }

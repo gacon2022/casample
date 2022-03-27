@@ -1,6 +1,7 @@
 package data.data_source.adapter;
 
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.model.QuestionType;
 import domain.repository.QuestionRepository;
 import domain.use_case.question.QuestionAdapter;
@@ -45,5 +46,10 @@ public class QuestionAdapterImpl implements QuestionAdapter {
     @Override
     public void deleteQuestion(Question question) {
         repository.deleteQuestion(question);
+    }
+
+    @Override
+    public void getQuestionAndAnswer(int id, Subject<QuestionData> service) {
+         repository.getQuestionAndAnswers(id,service);
     }
 }

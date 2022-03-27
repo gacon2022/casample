@@ -1,9 +1,11 @@
 package data.repository;
 
 import data.data_source.database.dao.QuestionDAO;
+import data.data_source.mappers.AnswerMapper;
 import data.data_source.mappers.QuestionMapper;
 import data.data_source.mappers.QuestionTypeMapper;
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.model.QuestionType;
 import domain.repository.QuestionRepository;
 import domain.utils.Subject;
@@ -14,11 +16,13 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     private final QuestionDAO dao;
     private final QuestionMapper mapper;
     private final QuestionTypeMapper questionTypeMapper;
+    private final AnswerMapper answerMapper;
 
-    public QuestionRepositoryImpl(QuestionDAO dao, QuestionMapper mapper, QuestionTypeMapper questionTypeMapper) {
+    public QuestionRepositoryImpl(QuestionDAO dao, QuestionMapper mapper, QuestionTypeMapper questionTypeMapper, AnswerMapper answerMapper) {
         this.dao = dao;
         this.mapper = mapper;
         this.questionTypeMapper = questionTypeMapper;
+        this.answerMapper = answerMapper;
     }
 
     @Override
@@ -66,5 +70,10 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         dao.deleteQuestionEntity(
                 mapper.fromDomain(question)
         );
+    }
+
+    @Override
+    public void getQuestionAndAnswers(int id, Subject<QuestionData> service) {
+        service.notifyAllObserver(dao.getQuestionAndAnswers(id, mapper, answerMapper));
     }
 }

@@ -57,4 +57,15 @@ public class Answer implements Model {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "answerId=" + answerId +
+                ", questionId=" + questionId +
+                ", answer='" + answer + '\'' +
+                ", isCorrect=" + isCorrect +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

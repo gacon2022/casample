@@ -1,6 +1,7 @@
 package domain.use_case.question;
 
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.model.QuestionType;
 import domain.utils.Subject;
 
@@ -20,7 +21,7 @@ public class QuestionUseCase {
     }
 
     public void getQuestionById(int id, Subject<Question> service) {
-         adapter.getQuestionById(id,service);
+        adapter.getQuestionById(id, service);
     }
 
     public List<Question> getQuestionListByType(QuestionType type) {
@@ -37,5 +38,9 @@ public class QuestionUseCase {
 
     public void deleteQuestion(Question question) {
         adapter.deleteQuestion(question);
+    }
+
+    public void getQuestionAndAnswer(int id, Subject<QuestionData> service) {
+        adapter.getQuestionAndAnswer(id, service);
     }
 }

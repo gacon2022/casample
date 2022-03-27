@@ -1,6 +1,7 @@
 package domain.use_case.question;
 
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.model.QuestionType;
 import domain.utils.Subject;
 
@@ -18,4 +19,6 @@ public interface QuestionAdapter {
     void updateQuestion(Question question);
 
     void deleteQuestion(Question question);
+
+    void getQuestionAndAnswer(int id, Subject<QuestionData> service);
 }

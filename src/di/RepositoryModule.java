@@ -18,6 +18,6 @@ public class RepositoryModule {
         QuestionDAO dao = DAOModule.getInstance().provideQuestionDAO();
         MapperModule mapperModule = MapperModule.getInstance();
 
-        return new QuestionRepositoryImpl(dao, mapperModule.provideQuestionMapper(), mapperModule.provideQuestionTypeMapper());
+        return new QuestionRepositoryImpl(dao, mapperModule.provideQuestionMapper(), mapperModule.provideQuestionTypeMapper(), mapperModule.provideAnswerMapper());
     }
 }

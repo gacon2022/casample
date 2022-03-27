@@ -1,5 +1,6 @@
 package di;
 
+import data.data_source.mappers.AnswerMapper;
 import data.data_source.mappers.QuestionMapper;
 import data.data_source.mappers.QuestionTypeMapper;
 
@@ -19,5 +20,9 @@ public class MapperModule {
 
     public QuestionTypeMapper provideQuestionTypeMapper() {
         return new QuestionTypeMapper();
+    }
+
+    public AnswerMapper provideAnswerMapper(){
+        return new AnswerMapper();
     }
 }

@@ -1,6 +1,7 @@
 package domain.repository;
 
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.model.QuestionType;
 import domain.utils.Subject;
 
@@ -18,4 +19,6 @@ public interface QuestionRepository {
     void updateQuestion(Question question);
 
     void deleteQuestion(Question question);
+
+    void getQuestionAndAnswers(int id, Subject<QuestionData> service);
 }

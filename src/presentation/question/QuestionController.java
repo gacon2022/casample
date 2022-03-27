@@ -1,6 +1,7 @@
 package presentation.question;
 
 import domain.model.Question;
+import domain.model.QuestionData;
 import domain.model.QuestionType;
 import domain.use_case.question.QuestionUseCase;
 import domain.utils.Subject;
@@ -20,7 +21,7 @@ public class QuestionController {
     }
 
     public void getQuestionById(int id, Subject<Question> service) {
-        useCase.getQuestionById(id,service);
+        useCase.getQuestionById(id, service);
     }
 
     public List<Question> getQuestionListByType(QuestionType type) {
@@ -37,5 +38,9 @@ public class QuestionController {
 
     public void deleteQuestion(Question question) {
         useCase.deleteQuestion(question);
+    }
+
+    public void getQuestionAndAnswer(int id, Subject<QuestionData> service) {
+        useCase.getQuestionAndAnswer(id, service);
     }
 }
